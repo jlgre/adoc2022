@@ -6,37 +6,21 @@ pub fn solve() -> (String, String) {
 }
 
 fn part1(calories: &str) -> i32 {
-    let mut max = 0;
-
-    calories.split("\n\n").map(|x| x.lines()).for_each(|elf| {
-        let carried = elf.map(|x| x.parse::<i32>().unwrap()).reduce(|acc, item| {
-            acc + item
-        }).unwrap();
-
-        if carried > max {
-            max = carried;
-        }
-    });
-
-    return max;
+    calories.split("\n\n")
+        .map(|x| x.lines())
+        .map(|elf| elf.map(|item| item.parse::<i32>().unwrap())
+             .reduce(|acc, item| acc + item))
+        .max().unwrap().unwrap()
 }
 
 fn part2(calories: &str) -> i32 {
-    let mut maxes = [0, 0, 0];
+    let mut calories_by_elves = calories.split("\n\n")
+        .map(|x| x.lines())
+        .map(|elf| elf.map(|item| item.parse::<i32>().unwrap())
+             .reduce(|acc, item| acc + item).unwrap())
+        .collect::<Vec<i32>>();
 
-    calories.split("\n\n").map(|x| x.lines()).for_each(|elf| {
-        let carried = elf.map(|x| x.parse::<i32>().unwrap()).reduce(|acc, item| {
-            acc + item
-        }).unwrap();
+    calories_by_elves.sort();
 
-        for (i, max) in maxes.into_iter().enumerate() {
-            if carried > max {
-                maxes[i] = carried;
-                maxes.sort_unstable();
-                break;
-            }
-        }
-    });
-
-    return maxes.into_iter().reduce(|acc, max| acc + max).unwrap();
+    calories_by_elves[calories_by_elves.len() - 3..].into_iter().sum()
 }
