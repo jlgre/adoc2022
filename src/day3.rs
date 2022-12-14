@@ -21,17 +21,9 @@ fn part1 (input: &str) -> i32 {
 
         acc + match [line[0..len / 2].to_string(), line[len / 2 ..].to_string()] {
             [x, y] => {
-                let mut shared = HashSet::new();
-                for x_char in x.chars() {
-                    for y_char in y.chars() {
-                        if x_char == y_char {
-                            shared.insert(x_char);
-                        }
-                    }
-                }
-                shared.iter().fold(0, |acc, c| {
-                    acc + intval(*c)
-                })
+                x.chars().collect::<HashSet<char>>()
+                    .intersection(&y.chars().collect::<HashSet<char>>())
+                    .fold(0, |acc, c| acc + intval(*c))
             }
         }
     })
