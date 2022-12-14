@@ -4,7 +4,7 @@ I am trying to learn Rust - so if you are looking for an example of what good Ru
 
 ## Days
 - [x] Day 1
-- [ ] Day 2
+- [x] Day 2
 - [ ] Day 3
 - [ ] Day 4
 - [ ] Day 5
