@@ -6,7 +6,7 @@ I am trying to learn Rust - so if you are looking for an example of what good Ru
 - [x] Day 1
 - [x] Day 2
 - [x] Day 3
-- [ ] Day 4
+- [x] Day 4
 - [ ] Day 5
 - [ ] Day 6
 - [ ] Day 7
