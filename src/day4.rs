@@ -34,9 +34,6 @@ fn part1(input: &str) -> i32 {
 
 fn part2(input: &str) -> i32 {
     act_on_line(input, |acc, assignment| {
-        // let real_coverage = assignment.iter().max().unwrap() - assignment.iter().min().unwrap();
-        // let max_coverage = (assignment[1] - assignment[0]) + (assignment[3] - assignment[2]);
-        // acc + (max_coverage - real_coverage)
         if assignment[1] >= assignment[2] && assignment[0] <= assignment[3] {
             acc + 1
         } else {
